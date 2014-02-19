@@ -2,7 +2,11 @@ module GoogleMaps
 
 using Requests, JSON
 
-export LatLng, geocode
+# types
+export LatLng
+
+# functions
+export geocode, getMap, getLatLngFromGeocode
 
 include("types.jl")
 include("maps.jl")

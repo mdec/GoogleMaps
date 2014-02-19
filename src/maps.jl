@@ -1,13 +1,20 @@
+function getLatLngFromGeocode(
+    geocodeResponse::Dict{String, Any})
+
+    location::Dict = geocodeResponse["results"][1]["geometry"]["location"]
+    latLng::LatLng = LatLng(location["lat"], location["lng"])
+
+    return(latLng)
+end
+
+
 function geocode(
     address::String)
 
-    geocodeResponse = get("https://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false&key=AIzaSyAEGq5zoIMANJa-5Q2Ux98rRjMx_ShlLtI")
-    parsedResponse = JSON.parse(geocodeResponse.data)
+    rawResponse = get("https://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false&key=AIzaSyAEGq5zoIMANJa-5Q2Ux98rRjMx_ShlLtI")
+    parsedResponseData = JSON.parse(rawResponse.data)
 
-    location = parsedResponse["results"][1]["geometry"]["location"]
-    geocodeLatLng = LatLng(location["lat"], location["lng"])
-
-    return(geocodeLatLng)
+    return(parsedResponseData)
 end
 
 function getMap(
@@ -17,4 +24,3 @@ function getMap(
     urlBase = "http://maps.googleapis.com/maps/api/staticmap"
 
 end
-
