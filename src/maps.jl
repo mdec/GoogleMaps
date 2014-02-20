@@ -7,10 +7,19 @@ function getLatLngFromGeocode(
     return(latLng)
 end
 
+function replaceAddressSpaces!(
+    address::String)
+
+    address = replace(address, r" +", "+")
+    return(address)
+end
+
+
 
 function geocode(
     address::String)
 
+    address = replaceAddressSpaces!(address)
     rawResponse = get("https://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false&key=AIzaSyAEGq5zoIMANJa-5Q2Ux98rRjMx_ShlLtI")
     parsedResponseData = JSON.parse(rawResponse.data)
 

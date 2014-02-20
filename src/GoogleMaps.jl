@@ -6,7 +6,7 @@ using Requests, JSON
 export LatLng
 
 # functions
-export geocode, getMap, getLatLngFromGeocode
+export geocode, getMap, getLatLngFromGeocode, replaceAddressSpaces!
 
 include("types.jl")
 include("maps.jl")
