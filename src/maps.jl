@@ -1,5 +1,6 @@
 using JSON, Requests
-include ("types.jl")
+include("apikey.jl")
+#include("types.jl")
 
 function callGeocodeAPI(
     url::String)
@@ -32,7 +33,7 @@ end
 function getGeocodeURL(
     address::String)
 
-    url = "https://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false&key=AIzaSyAEGq5zoIMANJa-5Q2Ux98rRjMx_ShlLtI"
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=$address&sensor=false&key=$apikey"
     return(url)
 end
 
