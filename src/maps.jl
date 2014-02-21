@@ -40,7 +40,9 @@ end
 function geocode(
     zip::Int)
 
-
+    zipString = string(zip)
+    geocodeResults = geocode(zipString)
+    return(geocodeResults)
 end
 
 function geocode(
